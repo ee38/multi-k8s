@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t ee38/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t uweuschroeder/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true ee38/react-test npm test
+  - docker run -e CI=true uweuschroeder/react-test npm test
 
 after_success:
   - docker build -t uweuschroeder/multi-client ./client
