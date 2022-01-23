@@ -6,13 +6,13 @@ before_install:
   - docker build -t uweuschroeder/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true uweuschroeder/react-test npm test
+  - docker run -e CI=true ee38/react-test npm test
 
 after_success:
-  - docker build -t uweuschroeder/multi-client ./client
-  - docker build -t uweuschroeder/multi-nginx ./nginx
-  - docker build -t uweuschroeder/multi-server ./server
-  - docker build -t uweuschroeder/multi-worker ./worker
+  - docker build -t ee38/multi-client ./client
+  - docker build -t ee38/multi-nginx ./nginx
+  - docker build -t ee38/multi-server ./server
+  - docker build -t ee38/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to the docker hub
